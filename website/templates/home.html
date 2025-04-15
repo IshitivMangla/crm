@@ -6,7 +6,30 @@
 
 {% if user.is_authenticated %}
 
-<h1>Hello World!</h1>
+<h1>Records...</h1>
+{% if records %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  {% for record in records %}
+  <tbody>
+    <tr>
+      <td><a href="{% url "record" record.id %}">{{record.id}}</a></td>
+      <td>{{record.first_name}}</td>
+      <td>{{record.last_name}}</td>
+      <td>{{record.email}}</td>
+      <br>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+{% endif %}
 
 {% else %}
 
